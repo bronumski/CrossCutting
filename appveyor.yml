@@ -1,0 +1,32 @@
+version: 0.0.{build}
+
+skip_tags: true
+
+environment:
+  access_token:
+    secure: kqX9rn9floiE60G2C/L6s/IBktmPwQ2POWKUwU7JZVR14SIZDUXQyCeluHe0Nf1k
+
+build_script:
+  - Build.bat
+  - ps: $wc = New-Object 'System.Net.WebClient'
+  - ps: $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\bin\TestResult.xml))
+
+test: off
+
+artifacts:
+  - path: 'bin\*.nupkg'
+
+on_success:
+  - git config --global credential.helper store
+  - git config --global user.email "crosscutting@appveyor.com"
+  - git config --global user.name "AppVeyor CrossCutting Build"
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git tag -a release/%APPVEYOR_BUILD_VERSION% -m "AppVeyor build %APPVEYOR_BUILD_VERSION%"
+  - git remote set-url origin https://github.com/bronumski/CrossCutting.git
+  - git push origin release/%APPVEYOR_BUILD_VERSION%
+
+deploy:
+    provider: NuGet
+    api_key:
+        secure: UWLHsXH6B9+FIAZ4HCbSnvKBAi1LHvmA3JLtLfjUccKRIUwS1VgutW5j9UkizRBn
+    artifact: /.*\.nupkg/
