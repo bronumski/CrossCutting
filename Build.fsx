@@ -18,7 +18,7 @@ let commitHash = Information.getCurrentSHA1("")
 let versionMacroBuild = 
     match buildServer with
     | AppVeyor -> ("0." + appVeyorBuildVersion.Replace("0.0.", ""))
-    | _ -> "0.0"
+    | _ -> "0"
 
 let buildVersion = versionMajorMinor + "." + versionMacroBuild
 
@@ -74,8 +74,8 @@ Target "CreatePackage" (fun _ ->
         
         NuGetPack (fun p -> 
             {p with
-                OutputPath = "bin"
-                WorkingDir = "bin"
+                OutputPath = binDir
+                WorkingDir = binDir
                 Version = buildVersion
                 IncludeReferencedProjects = true
                 Properties = [ ("configuration", "release") ]
@@ -91,7 +91,7 @@ Target "Default" (fun _ ->
  ==> "Version"
  ==> "Build"
  ==> "Test"
-// ==> "CreatePackage"
+ ==> "CreatePackage"
  ==> "Default"
 
 RunTargetOrDefault "Default"
