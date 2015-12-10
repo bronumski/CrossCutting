@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A56429C5-1165-4EE5-85FF-6FD6301379D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCutting.Log4Net", "CrossCutting.Log4Net\CrossCutting.Log4Net.csproj", "{DAEFB918-9A76-4ADB-B36A-F229E1072108}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A56429C5-1165-4EE5-85FF-6FD6301379D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A56429C5-1165-4EE5-85FF-6FD6301379D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A56429C5-1165-4EE5-85FF-6FD6301379D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

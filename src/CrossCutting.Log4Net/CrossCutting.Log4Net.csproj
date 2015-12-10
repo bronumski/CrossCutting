@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A56429C5-1165-4EE5-85FF-6FD6301379D8}</ProjectGuid>
+    <ProjectGuid>{DAEFB918-9A76-4ADB-B36A-F229E1072108}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CrossCutting</RootNamespace>
-    <AssemblyName>CrossCutting.Tests</AssemblyName>
+    <RootNamespace>CrossCutting.Diagnostics</RootNamespace>
+    <AssemblyName>CrossCutting.Log4Net</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,23 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.1.0\lib\net45\FluentAssertions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.1.0\lib\net45\FluentAssertions.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>..\..\packages\NSubstitute.1.9.2.0\lib\net45\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,33 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Diagnostics\Getting_a_logger_for_a_type.cs" />
-    <Compile Include="Diagnostics\log4net\Getting_a_log4net_logger.cs" />
-    <Compile Include="Diagnostics\log4net\Logging_to_log4net.cs" />
-    <Compile Include="Diagnostics\Logging_a_message_generated_by_a_function.cs" />
-    <Compile Include="Diagnostics\Logging_a_message_generated_by_a_function_and_an_eexception.cs" />
-    <Compile Include="Diagnostics\Logging_a_simple_message.cs" />
-    <Compile Include="Diagnostics\Logging_a_simple_message_with_an_exception.cs" />
-    <Compile Include="Diagnostics\LoggingExtensionTestCases.cs" />
-    <Compile Include="Diagnostics\Logging_a_simple_string_formated_message.cs" />
-    <Compile Include="Diagnostics\Logging_a_simple_string_formated_message_with_exception.cs" />
-    <Compile Include="Diagnostics\Logging_with_functionalized_arguments.cs" />
-    <Compile Include="Diagnostics\Logging_with_functionalized_arguments_and_exception.cs" />
-    <Compile Include="Diagnostics\LogLevelTester.cs" />
+    <Compile Include="Log4NetLogger.cs" />
+    <Compile Include="Log4NetLoggerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{456C7033-476D-4CE0-BD95-C9BED4FA7C67}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CrossCutting.Log4Net\CrossCutting.Log4Net.csproj">
-      <Project>{daefb918-9a76-4adb-b36a-f229e1072108}</Project>
-      <Name>CrossCutting.Log4Net</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
