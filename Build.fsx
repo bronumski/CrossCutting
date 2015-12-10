@@ -10,6 +10,9 @@ let binDir = "./bin"
 let srcDir = "./src"
 let testDlls = srcDir + "/**/bin/Release/*Tests.dll"
 
+let solutionFile = srcDir + "/CrossCutting.sln"
+let packageDir = "packages"
+
 let versionMajorMinor = "0.0"
 let version = versionMajorMinor + ".0"
 
@@ -29,7 +32,7 @@ Target "Clean" (fun _ ->
 )
 
 Target "Version" (fun _ ->
-    CreateCSharpAssemblyInfo "src/VersionInfo.cs"
+    CreateCSharpAssemblyInfo (srcDir + "/VersionInfo.cs")
         [Attribute.Version version
          Attribute.FileVersion buildVersion
          Attribute.Metadata("githash", commitHash)]
@@ -38,8 +41,16 @@ Target "Version" (fun _ ->
     | _ -> ()
 )
 
+Target "RestorePackages" (fun _ -> 
+     solutionFile
+     |> RestoreMSSolutionPackages (fun p ->
+         { p with
+             OutputPath = packageDir
+             ToolPath = "tools/Nuget/nuget.exe"
+             Retries = 4 }))
+
 Target "Build" (fun _ ->
-    !! "src/CrossCutting.sln"
+    !! solutionFile
         |> MSBuildReleaseExt "" [("Configuration", "Release")] "Build"
         |> Log "AppBuild-Output: "
 )
@@ -89,6 +100,7 @@ Target "Default" (fun _ ->
 
 "Clean"
  ==> "Version"
+ ==> "RestorePackages"
  ==> "Build"
  ==> "Test"
  ==> "CreatePackage"

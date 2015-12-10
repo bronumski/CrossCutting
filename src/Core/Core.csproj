@@ -45,6 +45,28 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Diagnostics\DebugLoggingExtensions.cs">
+      <DependentUpon>LoggingExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\DefaultLogger.cs" />
+    <Compile Include="Diagnostics\DefaultLoggerProvider.cs" />
+    <Compile Include="Diagnostics\ErrorLoggingExtensions.cs">
+      <DependentUpon>LoggingExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\FatalLoggingExtensions.cs">
+      <DependentUpon>LoggingExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\ILogger.cs" />
+    <Compile Include="Diagnostics\ILoggerProvider.cs" />
+    <Compile Include="Diagnostics\InfoLoggingExtensions.cs">
+      <DependentUpon>LoggingExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostics\LoggerProviderFactories.cs" />
+    <Compile Include="Diagnostics\LoggingExtensions.cs" />
+    <Compile Include="Diagnostics\LogLevel.cs" />
+    <Compile Include="Diagnostics\WarnLoggingExtensions.cs">
+      <DependentUpon>LoggingExtensions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

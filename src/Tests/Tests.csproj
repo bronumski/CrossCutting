@@ -30,6 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.1.0\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.1.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\packages\NSubstitute.1.9.2.0\lib\net45\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +53,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Diagnostics\Getting_a_logger_for_a_type.cs" />
+    <Compile Include="Diagnostics\Logging_a_message_generated_by_a_function.cs" />
+    <Compile Include="Diagnostics\Logging_a_message_generated_by_a_function_and_an_eexception.cs" />
+    <Compile Include="Diagnostics\Logging_a_simple_message.cs" />
+    <Compile Include="Diagnostics\Logging_a_simple_message_with_an_exception.cs" />
+    <Compile Include="Diagnostics\LoggingExtensionTestCases.cs" />
+    <Compile Include="Diagnostics\Logging_a_simple_string_formated_message.cs" />
+    <Compile Include="Diagnostics\Logging_a_simple_string_formated_message_with_exception.cs" />
+    <Compile Include="Diagnostics\Logging_with_functionalized_arguments.cs" />
+    <Compile Include="Diagnostics\Logging_with_functionalized_arguments_and_exception.cs" />
+    <Compile Include="Diagnostics\LogLevelTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{456C7033-476D-4CE0-BD95-C9BED4FA7C67}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
