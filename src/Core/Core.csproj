@@ -45,6 +45,8 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Diagnostics\ConsoleLogger.cs" />
+    <Compile Include="Diagnostics\ConsoleLoggerProvider.cs" />
     <Compile Include="Diagnostics\DebugLoggingExtensions.cs">
       <DependentUpon>LoggingExtensions.cs</DependentUpon>
     </Compile>

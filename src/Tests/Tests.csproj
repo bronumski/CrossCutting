@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Diagnostics\Console\Gettting_a_console_logger.cs" />
     <Compile Include="Diagnostics\Getting_a_logger_for_a_type.cs" />
     <Compile Include="Diagnostics\log4net\Getting_a_log4net_logger.cs" />
     <Compile Include="Diagnostics\log4net\Logging_to_log4net.cs" />
