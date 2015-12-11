@@ -72,7 +72,9 @@
     <Compile Include="Diagnostics\Logging_with_functionalized_arguments.cs" />
     <Compile Include="Diagnostics\Logging_with_functionalized_arguments_and_exception.cs" />
     <Compile Include="Diagnostics\LogLevelTester.cs" />
+    <Compile Include="IRequireStubedLoggerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequireStubbedLoggerProviderAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

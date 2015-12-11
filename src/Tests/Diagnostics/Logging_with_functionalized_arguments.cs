@@ -4,14 +4,8 @@ using NUnit.Framework;
 
 namespace CrossCutting.Diagnostics
 {
-    class Logging_with_functionalized_arguments
+    class Logging_with_functionalized_arguments : IRequireStubedLoggerProvider
     {
-        [TearDown]
-        public void TearDown()
-        {
-            LogProvider.Reset();
-        }
-
         [TestCaseSource(typeof(LoggingExtensionTestCases), "GetTestCases")]
         public void Should_log_formated_message(LogLevelTester logLevelTester)
         {
@@ -28,10 +22,7 @@ namespace CrossCutting.Diagnostics
         public void Should_not_blow_up_if_format_fails(LogLevelTester logLevelTester)
         {
             var faileOverLogger = Substitute.For<ILogger>();
-            var loggerProvider = Substitute.For<ILoggerProvider>();
-            loggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
-            
-            LogProvider.SetLoggingProvider(loggerProvider);
+            LoggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
             
             var logger = Substitute.For<ILogger>();
             logger.LevelEnabled(logLevelTester.LogLevel).Returns(true);
@@ -45,9 +36,7 @@ namespace CrossCutting.Diagnostics
         public void Should_not_blow_up_if_resolving_an_argument_fails(LogLevelTester logLevelTester)
         {
             var faileOverLogger = Substitute.For<ILogger>();
-            var loggerProvider = Substitute.For<ILoggerProvider>();
-            loggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
-            LogProvider.SetLoggingProvider(loggerProvider);
+            LoggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
 
             var logger = Substitute.For<ILogger>();
             logger.LevelEnabled(logLevelTester.LogLevel).Returns(true);
@@ -76,5 +65,7 @@ namespace CrossCutting.Diagnostics
         {
             string GetValue();
         }
+
+        public ILoggerProvider LoggerProvider { get; set; }
     }
 }

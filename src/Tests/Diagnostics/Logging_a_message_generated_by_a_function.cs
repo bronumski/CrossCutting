@@ -4,14 +4,8 @@ using NUnit.Framework;
 
 namespace CrossCutting.Diagnostics
 {
-    class Logging_a_message_generated_by_a_function
+    class Logging_a_message_generated_by_a_function : IRequireStubedLoggerProvider
     {
-        [TearDown]
-        public void TearDown()
-        {
-            LogProvider.Reset();
-        }
-
         [TestCaseSource(typeof(LoggingExtensionTestCases), "GetTestCases")]
         public void Should_not_resolve_message_if_log_level_is_disabled(LogLevelTester logLevelTester)
         {
@@ -39,10 +33,7 @@ namespace CrossCutting.Diagnostics
         public void Should_not_fail_if_building_log_message_throws_an_exception(LogLevelTester logLevelTester)
         {
             var faileOverLogger = Substitute.For<ILogger>();
-            var loggerProvider = Substitute.For<ILoggerProvider>();
-            loggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
-            
-            LogProvider.SetLoggingProvider(loggerProvider);
+            LoggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
             
             var logger = Substitute.For<ILogger>();
             logger.LevelEnabled(logLevelTester.LogLevel).Returns(true);
@@ -56,5 +47,7 @@ namespace CrossCutting.Diagnostics
         {
             string GetValue();
         }
+
+        public ILoggerProvider LoggerProvider { get; set; }
     }
 }
