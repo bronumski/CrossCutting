@@ -6,6 +6,12 @@ namespace CrossCutting.Diagnostics
 {
     class Logging_a_message_generated_by_a_function_and_an_eexception
     {
+        [TearDown]
+        public void TearDown()
+        {
+            LogProvider.Reset();
+        }
+
         [TestCaseSource(typeof(LoggingExtensionTestCases), "GetTestCases")]
         public void Should_not_resolve_message_if_log_level_is_disabled(LogLevelTester logLevelTester)
         {
@@ -37,7 +43,7 @@ namespace CrossCutting.Diagnostics
             var loggerProvider = Substitute.For<ILoggerProvider>();
             loggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
             
-            LoggerProviderFactories.SetLoggingProvider(loggerProvider);
+            LogProvider.SetLoggingProvider(loggerProvider);
             
             var logger = Substitute.For<ILogger>();
             logger.LevelEnabled(logLevelTester.LogLevel).Returns(true);

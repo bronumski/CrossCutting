@@ -1,10 +1,10 @@
 namespace CrossCutting.Diagnostics
 {
-    public class DefaultLoggerProvider : ILoggerProvider
+    public class NullLoggerProvider : ILoggerProvider
     {
         public ILogger Create(string type)
         {
-            return new DefaultLogger();
+            return new NullLogger();
         }
     }
 }

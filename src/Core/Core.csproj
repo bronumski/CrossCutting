@@ -50,8 +50,8 @@
     <Compile Include="Diagnostics\DebugLoggingExtensions.cs">
       <DependentUpon>LoggingExtensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diagnostics\DefaultLogger.cs" />
-    <Compile Include="Diagnostics\DefaultLoggerProvider.cs" />
+    <Compile Include="Diagnostics\NullLogger.cs" />
+    <Compile Include="Diagnostics\NullLoggerProvider.cs" />
     <Compile Include="Diagnostics\ErrorLoggingExtensions.cs">
       <DependentUpon>LoggingExtensions.cs</DependentUpon>
     </Compile>
@@ -63,7 +63,7 @@
     <Compile Include="Diagnostics\InfoLoggingExtensions.cs">
       <DependentUpon>LoggingExtensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diagnostics\LoggerProviderFactories.cs" />
+    <Compile Include="Diagnostics\LogProvider.cs" />
     <Compile Include="Diagnostics\LoggingExtensions.cs" />
     <Compile Include="Diagnostics\LogLevel.cs" />
     <Compile Include="Diagnostics\WarnLoggingExtensions.cs">

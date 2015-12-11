@@ -8,7 +8,7 @@ namespace CrossCutting.Diagnostics
     {
         public static ILogger Log(this object subject)
         {
-            return LoggerProviderFactories.LoggerProvider.Create(subject == null ? string.Empty : subject.GetType().ToString());
+            return LogProvider.LoggerProvider.Create(subject == null ? string.Empty : subject.GetType().ToString());
         }
 
         private static void SafeLogIfEnabled(this ILogger logger, LogLevel logLevel, Func<string> message)
@@ -73,7 +73,7 @@ namespace CrossCutting.Diagnostics
 
         private static void InternalLog(string message, Exception ex)
         {
-            LoggerProviderFactories.LoggerProvider.Create(typeof (LoggingExtensions).ToString())
+            LogProvider.LoggerProvider.Create(typeof (LoggingExtensions).ToString())
                 .Log(LogLevel.Warn, ex, message);
         }
     }

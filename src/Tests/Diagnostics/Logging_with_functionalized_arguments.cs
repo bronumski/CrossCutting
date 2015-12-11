@@ -6,6 +6,12 @@ namespace CrossCutting.Diagnostics
 {
     class Logging_with_functionalized_arguments
     {
+        [TearDown]
+        public void TearDown()
+        {
+            LogProvider.Reset();
+        }
+
         [TestCaseSource(typeof(LoggingExtensionTestCases), "GetTestCases")]
         public void Should_log_formated_message(LogLevelTester logLevelTester)
         {
@@ -25,7 +31,7 @@ namespace CrossCutting.Diagnostics
             var loggerProvider = Substitute.For<ILoggerProvider>();
             loggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
             
-            LoggerProviderFactories.SetLoggingProvider(loggerProvider);
+            LogProvider.SetLoggingProvider(loggerProvider);
             
             var logger = Substitute.For<ILogger>();
             logger.LevelEnabled(logLevelTester.LogLevel).Returns(true);
@@ -41,7 +47,7 @@ namespace CrossCutting.Diagnostics
             var faileOverLogger = Substitute.For<ILogger>();
             var loggerProvider = Substitute.For<ILoggerProvider>();
             loggerProvider.Create(Arg.Any<string>()).Returns(faileOverLogger);
-            LoggerProviderFactories.SetLoggingProvider(loggerProvider);
+            LogProvider.SetLoggingProvider(loggerProvider);
 
             var logger = Substitute.For<ILogger>();
             logger.LevelEnabled(logLevelTester.LogLevel).Returns(true);
