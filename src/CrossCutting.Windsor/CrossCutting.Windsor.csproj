@@ -47,12 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ProductInfo.cs">
+      <Link>Properties\ProductInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="LoggingFacility.cs" />
     <Compile Include="LoggingInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CrossCutting.Windsor.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
