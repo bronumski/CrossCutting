@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Timers;
 using Castle.DynamicProxy;
 
 namespace CrossCutting.Diagnostics
@@ -18,7 +17,7 @@ namespace CrossCutting.Diagnostics
             {
                 var completedTime = Timer.Time(invocation.Proceed);
 
-                logger.DebugFormat("Method '{0}' completed in '{1}'", invocation.Method.Name, completedTime);
+                logger.Debug(() => BuildCalledMethodResult(invocation, completedTime));
             }
             catch (Exception exception)
             {
@@ -42,6 +41,25 @@ namespace CrossCutting.Diagnostics
                 var name = invocation.Method.GetParameters()[i].Name;
                 messageBuilder.AppendLine().AppendFormat("\t{0} {1}: {2}", argument.GetType(), name, argument);
             }
+            return messageBuilder.ToString();
+        }
+
+        private string BuildCalledMethodResult(IInvocation invocation, TimeSpan completedTime)
+        {
+            var messageBuilder = new StringBuilder();
+
+            messageBuilder.AppendFormat("Method '{0}' ", invocation.Method.Name);
+
+            if (invocation.Method.ReturnType == typeof(void))
+            {
+                messageBuilder.Append("completed");
+            }
+            else
+            {
+                messageBuilder.AppendFormat("returned value '{0}'", invocation.ReturnValue);
+            }
+            messageBuilder.AppendFormat(" in '{0}'", completedTime);
+            
             return messageBuilder.ToString();
         }
     }

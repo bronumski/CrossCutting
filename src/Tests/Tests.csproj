@@ -80,6 +80,7 @@
     <Compile Include="Diagnostics\Logging_with_functionalized_arguments.cs" />
     <Compile Include="Diagnostics\Logging_with_functionalized_arguments_and_exception.cs" />
     <Compile Include="Diagnostics\LogLevelTester.cs" />
+    <Compile Include="Diagnostics\Windsor\Intercepting_function_calls.cs" />
     <Compile Include="Diagnostics\Windsor\Intercepting_method_calls.cs" />
     <Compile Include="IRequireStubedLoggerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
