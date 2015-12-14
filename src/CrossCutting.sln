@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCutting.Log4Net", "CrossCutting.Log4Net\CrossCutting.Log4Net.csproj", "{DAEFB918-9A76-4ADB-B36A-F229E1072108}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCutting.Windsor", "CrossCutting.Windsor\CrossCutting.Windsor.csproj", "{D55F367D-372F-4FC2-A1BD-75315B9BDFA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAEFB918-9A76-4ADB-B36A-F229E1072108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D55F367D-372F-4FC2-A1BD-75315B9BDFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D55F367D-372F-4FC2-A1BD-75315B9BDFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D55F367D-372F-4FC2-A1BD-75315B9BDFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D55F367D-372F-4FC2-A1BD-75315B9BDFA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

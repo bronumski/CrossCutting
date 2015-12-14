@@ -33,7 +33,17 @@ namespace CrossCutting.Diagnostics
 
         public static ILogger LoggerFor<T>()
         {
-            return loggerProvider.Create(typeof(T).ToString());
+            return LoggerFor(typeof(T));
+        }
+
+        public static ILogger LoggerFor(Type type)
+        {
+            return LoggerFor(type.ToString());
+        }
+
+        public static ILogger LoggerFor(string type)
+        {
+            return loggerProvider.Create(type);
         }
     }
 }

@@ -1,6 +1,7 @@
 # CrossCutting
 [![Build status](https://ci.appveyor.com/api/projects/status/obc6jv1768rol144?svg=true)](https://ci.appveyor.com/project/bronumski/crosscutting)
 [![NuGet Status](http://img.shields.io/nuget/v/CrossCutting.Core.svg?style=flat)](https://www.nuget.org/packages/CrossCutting.Core/) 
+[![NuGet Downloads](http://img.shields.io/nuget/dt/CrossCutting.Core.svg?style=flat)](https://www.nuget.org/packages/CrossCutting.Core/)
 
 **Cross cutting libraries for .net applications**
 
@@ -159,6 +160,7 @@ LogProvider.SetLoggingProvider(loggingProvider);
 
 //Stubbed logger
 var logger = Substitute.For<ILogger>();
+logger.LevelEnabled(LogLevel.Debug).Returns(true);
 
 //Add logger to logging provider so that it is returned when calling for a logger
 loggingProvider.Create(Arg.Any<string>()).Returns(logger);
@@ -177,3 +179,4 @@ LogProvider.Reset();
 
 [![Build status](https://ci.appveyor.com/api/projects/status/obc6jv1768rol144?svg=true)](https://ci.appveyor.com/project/bronumski/crosscutting)
 [![NuGet Status](http://img.shields.io/nuget/v/CrossCutting.Core.svg?style=flat)](https://www.nuget.org/packages/CrossCutting.Core/)
+[![NuGet Downloads](http://img.shields.io/nuget/dt/CrossCutting.Core.svg?style=flat)](https://www.nuget.org/packages/CrossCutting.Core/)
