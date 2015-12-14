@@ -13,7 +13,7 @@ let testDlls = srcDir + "/**/bin/Release/*Tests.dll"
 let solutionFile = srcDir + "/CrossCutting.sln"
 let packageDir = "packages"
 
-let versionMajorMinor = "0.1"
+let versionMajorMinor = "0.2"
 let version = versionMajorMinor + ".0"
 
 let commitHash = Information.getCurrentSHA1("")
